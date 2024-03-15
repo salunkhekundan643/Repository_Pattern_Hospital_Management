@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MY_Db_Hospital_Managment_Abstraction", "MY_Db_Hospital_Managment_Abstraction\MY_Db_Hospital_Managment_Abstraction.csproj", "{AD66A08C-3166-4AA5-BB74-1D810F00A01C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testproject", "Testproject\Testproject.csproj", "{34DE1978-93FD-42F9-BDC7-58B0D9CE3902}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MY_Db_Hospital_Managment_Connection", "..\MY_Db_Hospital_Managment_Connection\MY_Db_Hospital_Managment_Connection\MY_Db_Hospital_Managment_Connection.csproj", "{DDB9E3A3-914E-48AA-8B62-4B7FD7707703}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MY_Db_Hospital_Managment_Interface", "..\MY_Db_Hospital_Managment_Interface\MY_Db_Hospital_Managment_Interface\MY_Db_Hospital_Managment_Interface.csproj", "{B459209F-E42E-4FA4-8DC6-7AEB52775858}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MY_Db_Hospital_Managment_Model", "..\MY_Db_Hospital_Managment\MY_Db_Hospital_Managment\MY_Db_Hospital_Managment_Model.csproj", "{844704D8-29FD-4ECF-B888-94D1DB155E92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My_Db_Hospital_Management_EntityFramework", "My_Db_Hospital_Management_EntityFramework\My_Db_Hospital_Management_EntityFramework.csproj", "{AA7D8D31-BFBC-40D6-AD0E-42EBCBE1B2D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD66A08C-3166-4AA5-BB74-1D810F00A01C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD66A08C-3166-4AA5-BB74-1D810F00A01C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD66A08C-3166-4AA5-BB74-1D810F00A01C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD66A08C-3166-4AA5-BB74-1D810F00A01C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34DE1978-93FD-42F9-BDC7-58B0D9CE3902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34DE1978-93FD-42F9-BDC7-58B0D9CE3902}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34DE1978-93FD-42F9-BDC7-58B0D9CE3902}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34DE1978-93FD-42F9-BDC7-58B0D9CE3902}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDB9E3A3-914E-48AA-8B62-4B7FD7707703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDB9E3A3-914E-48AA-8B62-4B7FD7707703}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDB9E3A3-914E-48AA-8B62-4B7FD7707703}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDB9E3A3-914E-48AA-8B62-4B7FD7707703}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B459209F-E42E-4FA4-8DC6-7AEB52775858}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B459209F-E42E-4FA4-8DC6-7AEB52775858}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B459209F-E42E-4FA4-8DC6-7AEB52775858}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B459209F-E42E-4FA4-8DC6-7AEB52775858}.Release|Any CPU.Build.0 = Release|Any CPU
+		{844704D8-29FD-4ECF-B888-94D1DB155E92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{844704D8-29FD-4ECF-B888-94D1DB155E92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{844704D8-29FD-4ECF-B888-94D1DB155E92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{844704D8-29FD-4ECF-B888-94D1DB155E92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA7D8D31-BFBC-40D6-AD0E-42EBCBE1B2D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA7D8D31-BFBC-40D6-AD0E-42EBCBE1B2D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA7D8D31-BFBC-40D6-AD0E-42EBCBE1B2D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA7D8D31-BFBC-40D6-AD0E-42EBCBE1B2D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB80CB82-1809-45BF-8902-51102390B06B}
+	EndGlobalSection
+EndGlobal

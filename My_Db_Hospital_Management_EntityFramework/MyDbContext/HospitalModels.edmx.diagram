@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fbb8dd9e5c384427be06a836184e79b0" Name="Diagram1">
+        <EntityTypeShape EntityType="MY_Db_Hospital_ManagmentModel.A_M_Lookup_Hedar" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MY_Db_Hospital_ManagmentModel.A_M_Lookup_Line" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MY_Db_Hospital_ManagmentModel.M_Client_Registration" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="MY_Db_Hospital_ManagmentModel.M_Department_Information" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="MY_Db_Hospital_ManagmentModel.M_Designation_Information" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="MY_Db_Hospital_ManagmentModel.M_Employee_Information" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MY_Db_Hospital_ManagmentModel.M_Hospital_Information" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MY_Db_Hospital_ManagmentModel.M_Item_Information" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="MY_Db_Hospital_ManagmentModel.M_Material_Type_Infromation" Width="1.5" PointX="4.75" PointY="8.75" />
+        <EntityTypeShape EntityType="MY_Db_Hospital_ManagmentModel.M_Packing" Width="1.5" PointX="8.75" PointY="5.75" />
+        <EntityTypeShape EntityType="MY_Db_Hospital_ManagmentModel.M_Person_Information" Width="1.5" PointX="6.75" PointY="8.75" />
+        <EntityTypeShape EntityType="MY_Db_Hospital_ManagmentModel.M_Tax_Type_Information" Width="1.5" PointX="8.75" PointY="8.75" />
+        <EntityTypeShape EntityType="MY_Db_Hospital_ManagmentModel.M_Unit_Information" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MY_Db_Hospital_ManagmentModel.M_User_Login_Information" Width="1.5" PointX="10.75" PointY="3.75" />
+        <EntityTypeShape EntityType="MY_Db_Hospital_ManagmentModel.sysdiagram" Width="1.5" PointX="10.75" PointY="8.75" />
+        <EntityTypeShape EntityType="MY_Db_Hospital_ManagmentModel.T_Medicen_Sale_Hedar" Width="1.5" PointX="8.75" PointY="11.75" />
+        <EntityTypeShape EntityType="MY_Db_Hospital_ManagmentModel.T_Medicen_Sale_Line" Width="1.5" PointX="10.75" PointY="11.75" />
+        <EntityTypeShape EntityType="MY_Db_Hospital_ManagmentModel.T_Purchase_Hedar" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MY_Db_Hospital_ManagmentModel.T_Purchase_Line" Width="1.5" PointX="12.75" PointY="8.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

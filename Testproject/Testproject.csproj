@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{34DE1978-93FD-42F9-BDC7-58B0D9CE3902}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Testproject</RootNamespace>
+    <AssemblyName>Testproject</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="My_Db_Hospital_Management_EntityFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\My_Db_Hospital_Management_EntityFramework\obj\Debug\My_Db_Hospital_Management_EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MY_Db_Hospital_Managment">
+      <HintPath>..\..\MY_Db_Hospital_Managment\MY_Db_Hospital_Managment\obj\Debug\MY_Db_Hospital_Managment.dll</HintPath>
+    </Reference>
+    <Reference Include="MY_Db_Hospital_Managment_Connection, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MY_Db_Hospital_Managment_Connection\MY_Db_Hospital_Managment_Connection\obj\Debug\MY_Db_Hospital_Managment_Connection.dll</HintPath>
+    </Reference>
+    <Reference Include="MY_Db_Hospital_Managment_Interface">
+      <HintPath>..\..\MY_Db_Hospital_Managment_Interface\MY_Db_Hospital_Managment_Interface\obj\Debug\MY_Db_Hospital_Managment_Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Master_Binder\A_M_Lookup_Hedar_Binder.cs" />
+    <Compile Include="Master_Binder\A_M_Lookup_Line_Binder.cs" />
+    <Compile Include="Master_Binder\M_Client_Registration_Binder.cs" />
+    <Compile Include="Master_Binder\M_Department_Information_Binder.cs" />
+    <Compile Include="Master_Binder\M_Designation_Information_Binder.cs" />
+    <Compile Include="Master_Binder\M_Employee_Information_Binder.cs" />
+    <Compile Include="Master_Binder\M_Hospital_Information_Binder.cs" />
+    <Compile Include="Master_Binder\M_Item_Information_Binder.cs" />
+    <Compile Include="Master_Binder\M_Material_Type_Infromation_Binder.cs" />
+    <Compile Include="Master_Binder\M_Packing_Binder.cs" />
+    <Compile Include="Master_Binder\M_Person_Information_Binder.cs" />
+    <Compile Include="Master_Binder\M_Tax_Type_Information_Binder.cs" />
+    <Compile Include="Master_Binder\M_Unit_Information_Binder.cs" />
+    <Compile Include="Master_Binder\M_User_Login_Information_Binder.cs" />
+    <Compile Include="Master_Binder\T_Medicen_Sale_Hedar_Binder.cs" />
+    <Compile Include="Master_Binder\T_Medicen_Sale_Line_Binder.cs" />
+    <Compile Include="Master_Binder\T_Purchase_Hedar_Binder.cs" />
+    <Compile Include="Master_Binder\T_Purchase_Line_Binder.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MY_Db_Hospital_Managment_Abstraction\MY_Db_Hospital_Managment_Abstraction.csproj">
+      <Project>{ad66a08c-3166-4aa5-bb74-1d810f00a01c}</Project>
+      <Name>MY_Db_Hospital_Managment_Abstraction</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

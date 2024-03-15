@@ -1,0 +1,1380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MY_Db_Hospital_ManagmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="A_M_Lookup_Hedar">
+          <Key>
+            <PropertyRef Name="LookupId" />
+          </Key>
+          <Property Name="LookupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="GlobalId" Type="int" />
+          <Property Name="LookupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LookupDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ActiveFlag" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="A_M_Lookup_Line">
+          <Key>
+            <PropertyRef Name="LineId" />
+          </Key>
+          <Property Name="LineId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="GlobalId" Type="int" />
+          <Property Name="LookupId" Type="int" />
+          <Property Name="LineName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LineDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="M_Client_Registration">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientCode" Type="nvarchar" MaxLength="7" />
+          <Property Name="ClientGlobalId" Type="int" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="ClientPhone" Type="nvarchar" MaxLength="15" />
+          <Property Name="ClientCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="BusniessName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientPan" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientRegistrationNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientGST" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientLogo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="ActiveFlag" Type="nvarchar" MaxLength="10" />
+          <Property Name="Attr1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr3" Type="int" />
+        </EntityType>
+        <EntityType Name="M_Department_Information">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentStartDate" Type="datetime" />
+          <Property Name="DepartmentCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DepartmentAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="DepartmentDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="HospitalId" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="M_Designation_Information">
+          <Key>
+            <PropertyRef Name="DesignationId" />
+          </Key>
+          <Property Name="DesignationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DesignationCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="DesignationName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DesignationQualification" Type="nvarchar" MaxLength="150" />
+          <Property Name="DesignationDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="AcFlag" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="M_Employee_Information">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeCode" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="EmployeeTitle" Type="int" />
+          <Property Name="EmployeeGender" Type="int" />
+          <Property Name="EmployeeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EmployeeDesignation" Type="int" Nullable="false" />
+          <Property Name="EmployeeDepartment" Type="int" Nullable="false" />
+          <Property Name="EmployeeDob" Type="datetime" />
+          <Property Name="EmployeeJoingDate" Type="datetime" />
+          <Property Name="EmployeeAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="EmployeeAddress1" Type="nvarchar" MaxLength="500" />
+          <Property Name="EmployeeCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployeePan" Type="nvarchar" MaxLength="20" />
+          <Property Name="EmployeeAdharchard" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployeeAlternetNo" Type="nvarchar" MaxLength="15" />
+          <Property Name="EmployeeMobile" Type="nvarchar" MaxLength="15" />
+          <Property Name="EmployeeEmailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployeeBankName" Type="int" />
+          <Property Name="EmployeeAccountNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployeeIfscCode" Type="nvarchar" MaxLength="15" />
+          <Property Name="EmployeeBranch" Type="int" />
+          <Property Name="EmployeePhoto" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdateBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="ActiveFlag" Type="bit" />
+          <Property Name="Attr1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr4" Type="int" />
+        </EntityType>
+        <EntityType Name="M_Hospital_Information">
+          <Key>
+            <PropertyRef Name="HospitalId" />
+          </Key>
+          <Property Name="HospitalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HospitalName" Type="nvarchar" MaxLength="100" />
+          <Property Name="HospitalAddress" Type="nvarchar" MaxLength="200" />
+          <Property Name="HospitalEmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Logo" Type="nvarchar" MaxLength="1" />
+          <Property Name="HospitalCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="HospitalPan" Type="nvarchar" MaxLength="50" />
+          <Property Name="HospitalContactNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="HospitalContactNumber1" Type="nvarchar" MaxLength="20" />
+          <Property Name="Hospitalwedsite" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="M_Item_Information">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="7" />
+          <Property Name="ItemType" Type="int" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="150" />
+          <Property Name="ItemManufactionName" Type="nvarchar" MaxLength="150" />
+          <Property Name="ItemPacinking" Type="int" />
+          <Property Name="ItemUseName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ItemDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="ItemStartDate" Type="datetime" />
+          <Property Name="ItemEndDate" Type="datetime" />
+          <Property Name="ItemFirstUnit" Type="int" />
+          <Property Name="ItemSecondUnit" Type="int" />
+          <Property Name="ItemConversionFirstFactor" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ItemConversionSecondfactor" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ItemIsStockebal" Type="bit" />
+          <Property Name="ItemQualityCheck" Type="bit" />
+          <Property Name="ItemReturnPolicy" Type="bit" />
+          <Property Name="ItemMinQTY" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ItemMaxQTY" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ItemHsnCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="ItemPoType" Type="int" />
+          <Property Name="ItemTaxApply" Type="bit" />
+          <Property Name="ItemPoTaxGroup" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ItemSaleTaxGroup" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="ActiveFlag" Type="bit" />
+          <Property Name="Attr1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr4" Type="int" />
+          <Property Name="Attr5" Type="int" />
+          <Property Name="Attr6" Type="int" />
+        </EntityType>
+        <EntityType Name="M_Material_Type_Infromation">
+          <Key>
+            <PropertyRef Name="MaterialTypeId" />
+          </Key>
+          <Property Name="MaterialTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaterialType" Type="nvarchar" MaxLength="100" />
+          <Property Name="GlobalId" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="M_Packing">
+          <Key>
+            <PropertyRef Name="PackingId" />
+          </Key>
+          <Property Name="PackingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackingName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstPackingConvert" Type="int" />
+          <Property Name="SecondPackingConvert" Type="int" />
+          <Property Name="Attr1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr2" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="M_Person_Information">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="PersonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="GlobalId" Type="int" />
+          <Property Name="ModuleId" Type="int" />
+          <Property Name="PersonCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="PersonType" Type="int" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonEmailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonContactNumber" Type="nvarchar" MaxLength="15" />
+          <Property Name="PersonBussnessName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonOfficeNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonPancard" Type="nvarchar" MaxLength="20" />
+          <Property Name="PersonCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonBankName" Type="int" />
+          <Property Name="PersonAccountNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonGstNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentTerms" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="ActiveFlag" Type="bit" />
+          <Property Name="Attr1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr4" Type="int" />
+          <Property Name="Attr5" Type="datetime" />
+        </EntityType>
+        <EntityType Name="M_Tax_Type_Information">
+          <Key>
+            <PropertyRef Name="TaxId" />
+          </Key>
+          <Property Name="TaxId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaxName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaxPercent" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TaxGroupId" Type="int" />
+        </EntityType>
+        <EntityType Name="M_Unit_Information">
+          <Key>
+            <PropertyRef Name="UnitId" />
+          </Key>
+          <Property Name="UnitId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="M_User_Login_Information">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="15" />
+          <Property Name="UserPassword" Type="nvarchar" MaxLength="8" />
+          <Property Name="UserConfirmPassword" Type="nvarchar" MaxLength="8" />
+          <Property Name="EmployeeId" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="Updateddate" Type="datetime" />
+          <Property Name="Attr1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr2" Type="nvarchar" MaxLength="50" />
+          <Property Name="attr3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr4" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="T_Medicen_Sale_Hedar">
+          <Key>
+            <PropertyRef Name="Sale_Hedar_Id" />
+          </Key>
+          <Property Name="Sale_Hedar_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sale_Date" Type="datetime" />
+          <Property Name="Client_Id" Type="int" Nullable="false" />
+          <Property Name="Global_Id" Type="int" Nullable="false" />
+          <Property Name="Sale_Document_Number" Type="nvarchar" MaxLength="50" />
+          <Property Name="Customer_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Discount_Percentage" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Discount_In_Rupees" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Discount_Amount_Percentage" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Discount_Amount_Rupees" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Total_Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Contact_No" Type="nvarchar" MaxLength="20" />
+          <Property Name="Dr_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr1" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Attr2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Created_Date" Type="datetime" />
+          <Property Name="Updated_Date" Type="datetime" />
+          <Property Name="Created_By" Type="int" />
+          <Property Name="Updated_By" Type="int" />
+        </EntityType>
+        <EntityType Name="T_Medicen_Sale_Line">
+          <Key>
+            <PropertyRef Name="SaleLineId" />
+          </Key>
+          <Property Name="SaleLineId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SaleHedarId" Type="int" />
+          <Property Name="PurchaseLineId" Type="int" />
+          <Property Name="ItemId" Type="int" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="500" />
+          <Property Name="ItemBatch" Type="nvarchar" MaxLength="500" />
+          <Property Name="ItemPckg" Type="nvarchar" MaxLength="20" />
+          <Property Name="ItemExpDate" Type="datetime" />
+          <Property Name="ItemMfg" Type="nvarchar" MaxLength="50" />
+          <Property Name="ItemQty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ItemMrp" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ItemTotalAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PaidUnpaid" Type="int" />
+          <Property Name="Attr1" Type="int" />
+          <Property Name="Attr2" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Attr3" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="T_Purchase_Hedar">
+          <Key>
+            <PropertyRef Name="PurchaseHedarId" />
+          </Key>
+          <Property Name="PurchaseHedarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="GlobalId" Type="int" />
+          <Property Name="PurchaseDocumentNo" Type="nvarchar" MaxLength="15" />
+          <Property Name="PurchaseStatus" Type="int" />
+          <Property Name="PurchaseApprovBy" Type="int" />
+          <Property Name="ApproveDate" Type="datetime" />
+          <Property Name="PurchaseDate" Type="datetime" />
+          <Property Name="PurchaseTotalAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PurchaseType" Type="int" />
+          <Property Name="SupplierId" Type="int" />
+          <Property Name="PayTerms" Type="int" />
+          <Property Name="AgentId" Type="int" />
+          <Property Name="Commision" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CommisionAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalPurchaseAmountHedar" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="Attr1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr5" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr6" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Attr7" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Attr8" Type="int" />
+        </EntityType>
+        <EntityType Name="T_Purchase_Line">
+          <Key>
+            <PropertyRef Name="PurchaseLineId" />
+          </Key>
+          <Property Name="PurchaseLineId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseHedar" Type="int" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="GlobalId" Type="int" />
+          <Property Name="ItemId" Type="int" />
+          <Property Name="ItemQty" Type="int" />
+          <Property Name="ItemTotalStripQty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ItemStripQty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ItemPerUnitRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ItemUnit" Type="int" />
+          <Property Name="ItemRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ItemPacking" Type="int" />
+          <Property Name="TaxId" Type="int" />
+          <Property Name="GodownId" Type="int" />
+          <Property Name="BranchId" Type="int" />
+          <Property Name="DevileryDate" Type="datetime" />
+          <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TaxType" Type="int" />
+          <Property Name="BasicAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TaxAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="QualityCheck" Type="nvarchar" MaxLength="50" />
+          <Property Name="BatchNO" Type="nvarchar" MaxLength="50" />
+          <Property Name="BatchDate" Type="datetime" />
+          <Property Name="ExpireDate" Type="datetime" />
+          <Property Name="ItemMrp" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ItemDiscount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ItemMediRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MediQty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="GstVat" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Sgst" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Igst" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MediTotalAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedBy" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="Attr1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attr3" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Attr4" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Attr5" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Attr6" Type="int" />
+          <Property Name="Attr7" Type="int" />
+          <Property Name="HsnCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="SachDiscount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FreeQty" Type="int" />
+          <Property Name="PackingId" Type="int" />
+          <Property Name="DiscountAmount" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityContainer Name="MY_Db_Hospital_ManagmentModelStoreContainer">
+          <EntitySet Name="A_M_Lookup_Hedar" EntityType="Self.A_M_Lookup_Hedar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="A_M_Lookup_Line" EntityType="Self.A_M_Lookup_Line" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Client_Registration" EntityType="Self.M_Client_Registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Department_Information" EntityType="Self.M_Department_Information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Designation_Information" EntityType="Self.M_Designation_Information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Employee_Information" EntityType="Self.M_Employee_Information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Hospital_Information" EntityType="Self.M_Hospital_Information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Item_Information" EntityType="Self.M_Item_Information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Material_Type_Infromation" EntityType="Self.M_Material_Type_Infromation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Packing" EntityType="Self.M_Packing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Person_Information" EntityType="Self.M_Person_Information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Tax_Type_Information" EntityType="Self.M_Tax_Type_Information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Unit_Information" EntityType="Self.M_Unit_Information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_User_Login_Information" EntityType="Self.M_User_Login_Information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Medicen_Sale_Hedar" EntityType="Self.T_Medicen_Sale_Hedar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Medicen_Sale_Line" EntityType="Self.T_Medicen_Sale_Line" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Purchase_Hedar" EntityType="Self.T_Purchase_Hedar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Purchase_Line" EntityType="Self.T_Purchase_Line" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MY_Db_Hospital_ManagmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="A_M_Lookup_Hedar">
+          <Key>
+            <PropertyRef Name="LookupId" />
+          </Key>
+          <Property Name="LookupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="GlobalId" Type="Int32" />
+          <Property Name="LookupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LookupDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ActiveFlag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="A_M_Lookup_Line">
+          <Key>
+            <PropertyRef Name="LineId" />
+          </Key>
+          <Property Name="LineId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="GlobalId" Type="Int32" />
+          <Property Name="LookupId" Type="Int32" />
+          <Property Name="LineName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LineDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="MY_Db_Hospital_ManagmentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="A_M_Lookup_Hedar" EntityType="Self.A_M_Lookup_Hedar" />
+          <EntitySet Name="A_M_Lookup_Line" EntityType="Self.A_M_Lookup_Line" />
+          <EntitySet Name="M_Client_Registration" EntityType="MY_Db_Hospital_ManagmentModel.M_Client_Registration" />
+          <EntitySet Name="M_Department_Information" EntityType="MY_Db_Hospital_ManagmentModel.M_Department_Information" />
+          <EntitySet Name="M_Designation_Information" EntityType="MY_Db_Hospital_ManagmentModel.M_Designation_Information" />
+          <EntitySet Name="M_Employee_Information" EntityType="MY_Db_Hospital_ManagmentModel.M_Employee_Information" />
+          <EntitySet Name="M_Hospital_Information" EntityType="MY_Db_Hospital_ManagmentModel.M_Hospital_Information" />
+          <EntitySet Name="M_Item_Information" EntityType="MY_Db_Hospital_ManagmentModel.M_Item_Information" />
+          <EntitySet Name="M_Material_Type_Infromation" EntityType="MY_Db_Hospital_ManagmentModel.M_Material_Type_Infromation" />
+          <EntitySet Name="M_Packing" EntityType="MY_Db_Hospital_ManagmentModel.M_Packing" />
+          <EntitySet Name="M_Person_Information" EntityType="MY_Db_Hospital_ManagmentModel.M_Person_Information" />
+          <EntitySet Name="M_Tax_Type_Information" EntityType="MY_Db_Hospital_ManagmentModel.M_Tax_Type_Information" />
+          <EntitySet Name="M_Unit_Information" EntityType="MY_Db_Hospital_ManagmentModel.M_Unit_Information" />
+          <EntitySet Name="M_User_Login_Information" EntityType="MY_Db_Hospital_ManagmentModel.M_User_Login_Information" />
+          <EntitySet Name="sysdiagrams" EntityType="MY_Db_Hospital_ManagmentModel.sysdiagram" />
+          <EntitySet Name="T_Medicen_Sale_Hedar" EntityType="MY_Db_Hospital_ManagmentModel.T_Medicen_Sale_Hedar" />
+          <EntitySet Name="T_Medicen_Sale_Line" EntityType="MY_Db_Hospital_ManagmentModel.T_Medicen_Sale_Line" />
+          <EntitySet Name="T_Purchase_Hedar" EntityType="MY_Db_Hospital_ManagmentModel.T_Purchase_Hedar" />
+          <EntitySet Name="T_Purchase_Line" EntityType="MY_Db_Hospital_ManagmentModel.T_Purchase_Line" />
+        </EntityContainer>
+        <EntityType Name="M_Client_Registration">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientCode" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="ClientGlobalId" Type="Int32" />
+          <Property Name="ClientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ClientPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ClientCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BusniessName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientPan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientRegistrationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientGST" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientLogo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ActiveFlag" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Attr1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr3" Type="Int32" />
+        </EntityType>
+        <EntityType Name="M_Department_Information">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentStartDate" Type="DateTime" Precision="3" />
+          <Property Name="DepartmentCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="HospitalId" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="M_Designation_Information">
+          <Key>
+            <PropertyRef Name="DesignationId" />
+          </Key>
+          <Property Name="DesignationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DesignationCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DesignationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DesignationQualification" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DesignationDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="AcFlag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="M_Employee_Information">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeCode" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeTitle" Type="Int32" />
+          <Property Name="EmployeeGender" Type="Int32" />
+          <Property Name="EmployeeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeDesignation" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeDepartment" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeDob" Type="DateTime" Precision="3" />
+          <Property Name="EmployeeJoingDate" Type="DateTime" Precision="3" />
+          <Property Name="EmployeeAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeAddress1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeePan" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeAdharchard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeAlternetNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeMobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeEmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeBankName" Type="Int32" />
+          <Property Name="EmployeeAccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeIfscCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeBranch" Type="Int32" />
+          <Property Name="EmployeePhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdateBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ActiveFlag" Type="Boolean" />
+          <Property Name="Attr1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr4" Type="Int32" />
+        </EntityType>
+        <EntityType Name="M_Hospital_Information">
+          <Key>
+            <PropertyRef Name="HospitalId" />
+          </Key>
+          <Property Name="HospitalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HospitalName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HospitalAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="HospitalEmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="HospitalCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HospitalPan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HospitalContactNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HospitalContactNumber1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Hospitalwedsite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="M_Item_Information">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemCode" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="ItemType" Type="Int32" />
+          <Property Name="ItemName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ItemManufactionName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ItemPacinking" Type="Int32" />
+          <Property Name="ItemUseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ItemStartDate" Type="DateTime" Precision="3" />
+          <Property Name="ItemEndDate" Type="DateTime" Precision="3" />
+          <Property Name="ItemFirstUnit" Type="Int32" />
+          <Property Name="ItemSecondUnit" Type="Int32" />
+          <Property Name="ItemConversionFirstFactor" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ItemConversionSecondfactor" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ItemIsStockebal" Type="Boolean" />
+          <Property Name="ItemQualityCheck" Type="Boolean" />
+          <Property Name="ItemReturnPolicy" Type="Boolean" />
+          <Property Name="ItemMinQTY" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ItemMaxQTY" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ItemHsnCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ItemPoType" Type="Int32" />
+          <Property Name="ItemTaxApply" Type="Boolean" />
+          <Property Name="ItemPoTaxGroup" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ItemSaleTaxGroup" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ActiveFlag" Type="Boolean" />
+          <Property Name="Attr1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr4" Type="Int32" />
+          <Property Name="Attr5" Type="Int32" />
+          <Property Name="Attr6" Type="Int32" />
+        </EntityType>
+        <EntityType Name="M_Material_Type_Infromation">
+          <Key>
+            <PropertyRef Name="MaterialTypeId" />
+          </Key>
+          <Property Name="MaterialTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaterialType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GlobalId" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="M_Packing">
+          <Key>
+            <PropertyRef Name="PackingId" />
+          </Key>
+          <Property Name="PackingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackingName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstPackingConvert" Type="Int32" />
+          <Property Name="SecondPackingConvert" Type="Int32" />
+          <Property Name="Attr1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="M_Person_Information">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="PersonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="GlobalId" Type="Int32" />
+          <Property Name="ModuleId" Type="Int32" />
+          <Property Name="PersonCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PersonType" Type="Int32" />
+          <Property Name="PersonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonEmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonContactNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="PersonBussnessName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonOfficeNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonPancard" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PersonCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonBankName" Type="Int32" />
+          <Property Name="PersonAccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonGstNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentTerms" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ActiveFlag" Type="Boolean" />
+          <Property Name="Attr1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr4" Type="Int32" />
+          <Property Name="Attr5" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="M_Tax_Type_Information">
+          <Key>
+            <PropertyRef Name="TaxId" />
+          </Key>
+          <Property Name="TaxId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaxName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaxPercent" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TaxGroupId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="M_Unit_Information">
+          <Key>
+            <PropertyRef Name="UnitId" />
+          </Key>
+          <Property Name="UnitId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="M_User_Login_Information">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="UserPassword" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="UserConfirmPassword" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeId" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="Updateddate" Type="DateTime" Precision="3" />
+          <Property Name="Attr1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="attr3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="T_Medicen_Sale_Hedar">
+          <Key>
+            <PropertyRef Name="Sale_Hedar_Id" />
+          </Key>
+          <Property Name="Sale_Hedar_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sale_Date" Type="DateTime" Precision="3" />
+          <Property Name="Client_Id" Type="Int32" Nullable="false" />
+          <Property Name="Global_Id" Type="Int32" Nullable="false" />
+          <Property Name="Sale_Document_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Customer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Discount_Percentage" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Discount_In_Rupees" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Discount_Amount_Percentage" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Discount_Amount_Rupees" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Total_Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Contact_No" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Dr_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr1" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Attr2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Updated_Date" Type="DateTime" Precision="3" />
+          <Property Name="Created_By" Type="Int32" />
+          <Property Name="Updated_By" Type="Int32" />
+        </EntityType>
+        <EntityType Name="T_Medicen_Sale_Line">
+          <Key>
+            <PropertyRef Name="SaleLineId" />
+          </Key>
+          <Property Name="SaleLineId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SaleHedarId" Type="Int32" />
+          <Property Name="PurchaseLineId" Type="Int32" />
+          <Property Name="ItemId" Type="Int32" />
+          <Property Name="ItemName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ItemBatch" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ItemPckg" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ItemExpDate" Type="DateTime" Precision="3" />
+          <Property Name="ItemMfg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemQty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ItemMrp" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ItemTotalAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PaidUnpaid" Type="Int32" />
+          <Property Name="Attr1" Type="Int32" />
+          <Property Name="Attr2" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Attr3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_Purchase_Hedar">
+          <Key>
+            <PropertyRef Name="PurchaseHedarId" />
+          </Key>
+          <Property Name="PurchaseHedarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="GlobalId" Type="Int32" />
+          <Property Name="PurchaseDocumentNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="PurchaseStatus" Type="Int32" />
+          <Property Name="PurchaseApprovBy" Type="Int32" />
+          <Property Name="ApproveDate" Type="DateTime" Precision="3" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="3" />
+          <Property Name="PurchaseTotalAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PurchaseType" Type="Int32" />
+          <Property Name="SupplierId" Type="Int32" />
+          <Property Name="PayTerms" Type="Int32" />
+          <Property Name="AgentId" Type="Int32" />
+          <Property Name="Commision" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CommisionAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalPurchaseAmountHedar" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="Attr1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr6" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Attr7" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Attr8" Type="Int32" />
+        </EntityType>
+        <EntityType Name="T_Purchase_Line">
+          <Key>
+            <PropertyRef Name="PurchaseLineId" />
+          </Key>
+          <Property Name="PurchaseLineId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseHedar" Type="Int32" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="GlobalId" Type="Int32" />
+          <Property Name="ItemId" Type="Int32" />
+          <Property Name="ItemQty" Type="Int32" />
+          <Property Name="ItemTotalStripQty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ItemStripQty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ItemPerUnitRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ItemUnit" Type="Int32" />
+          <Property Name="ItemRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ItemPacking" Type="Int32" />
+          <Property Name="TaxId" Type="Int32" />
+          <Property Name="GodownId" Type="Int32" />
+          <Property Name="BranchId" Type="Int32" />
+          <Property Name="DevileryDate" Type="DateTime" Precision="3" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TaxType" Type="Int32" />
+          <Property Name="BasicAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TaxAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="QualityCheck" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BatchNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BatchDate" Type="DateTime" Precision="3" />
+          <Property Name="ExpireDate" Type="DateTime" Precision="3" />
+          <Property Name="ItemMrp" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ItemDiscount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ItemMediRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MediQty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GstVat" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Sgst" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Igst" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MediTotalAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedBy" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Attr1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attr3" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Attr4" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Attr5" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Attr6" Type="Int32" />
+          <Property Name="Attr7" Type="Int32" />
+          <Property Name="HsnCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SachDiscount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FreeQty" Type="Int32" />
+          <Property Name="PackingId" Type="Int32" />
+          <Property Name="DiscountAmount" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MY_Db_Hospital_ManagmentModelStoreContainer" CdmEntityContainer="MY_Db_Hospital_ManagmentEntities">
+          <EntitySetMapping Name="A_M_Lookup_Hedar">
+            <EntityTypeMapping TypeName="MY_Db_Hospital_ManagmentModel.A_M_Lookup_Hedar">
+              <MappingFragment StoreEntitySet="A_M_Lookup_Hedar">
+                <ScalarProperty Name="LookupId" ColumnName="LookupId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="GlobalId" ColumnName="GlobalId" />
+                <ScalarProperty Name="LookupName" ColumnName="LookupName" />
+                <ScalarProperty Name="LookupDescription" ColumnName="LookupDescription" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="ActiveFlag" ColumnName="ActiveFlag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="A_M_Lookup_Line">
+            <EntityTypeMapping TypeName="MY_Db_Hospital_ManagmentModel.A_M_Lookup_Line">
+              <MappingFragment StoreEntitySet="A_M_Lookup_Line">
+                <ScalarProperty Name="LineId" ColumnName="LineId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="GlobalId" ColumnName="GlobalId" />
+                <ScalarProperty Name="LookupId" ColumnName="LookupId" />
+                <ScalarProperty Name="LineName" ColumnName="LineName" />
+                <ScalarProperty Name="LineDescription" ColumnName="LineDescription" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Client_Registration">
+            <EntityTypeMapping TypeName="MY_Db_Hospital_ManagmentModel.M_Client_Registration">
+              <MappingFragment StoreEntitySet="M_Client_Registration">
+                <ScalarProperty Name="Attr3" ColumnName="Attr3" />
+                <ScalarProperty Name="Attr2" ColumnName="Attr2" />
+                <ScalarProperty Name="Attr1" ColumnName="Attr1" />
+                <ScalarProperty Name="ActiveFlag" ColumnName="ActiveFlag" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ClientEmail" ColumnName="ClientEmail" />
+                <ScalarProperty Name="ClientLogo" ColumnName="ClientLogo" />
+                <ScalarProperty Name="ClientGST" ColumnName="ClientGST" />
+                <ScalarProperty Name="ClientRegistrationNo" ColumnName="ClientRegistrationNo" />
+                <ScalarProperty Name="ClientPan" ColumnName="ClientPan" />
+                <ScalarProperty Name="BusniessName" ColumnName="BusniessName" />
+                <ScalarProperty Name="ClientCity" ColumnName="ClientCity" />
+                <ScalarProperty Name="ClientPhone" ColumnName="ClientPhone" />
+                <ScalarProperty Name="ClientAddress" ColumnName="ClientAddress" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientGlobalId" ColumnName="ClientGlobalId" />
+                <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Department_Information">
+            <EntityTypeMapping TypeName="MY_Db_Hospital_ManagmentModel.M_Department_Information">
+              <MappingFragment StoreEntitySet="M_Department_Information">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="HospitalId" ColumnName="HospitalId" />
+                <ScalarProperty Name="DepartmentDescription" ColumnName="DepartmentDescription" />
+                <ScalarProperty Name="DepartmentAddress" ColumnName="DepartmentAddress" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+                <ScalarProperty Name="DepartmentStartDate" ColumnName="DepartmentStartDate" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Designation_Information">
+            <EntityTypeMapping TypeName="MY_Db_Hospital_ManagmentModel.M_Designation_Information">
+              <MappingFragment StoreEntitySet="M_Designation_Information">
+                <ScalarProperty Name="AcFlag" ColumnName="AcFlag" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="DesignationDescription" ColumnName="DesignationDescription" />
+                <ScalarProperty Name="DesignationQualification" ColumnName="DesignationQualification" />
+                <ScalarProperty Name="DesignationName" ColumnName="DesignationName" />
+                <ScalarProperty Name="DesignationCode" ColumnName="DesignationCode" />
+                <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Employee_Information">
+            <EntityTypeMapping TypeName="MY_Db_Hospital_ManagmentModel.M_Employee_Information">
+              <MappingFragment StoreEntitySet="M_Employee_Information">
+                <ScalarProperty Name="Attr4" ColumnName="Attr4" />
+                <ScalarProperty Name="Attr3" ColumnName="Attr3" />
+                <ScalarProperty Name="Attr2" ColumnName="Attr2" />
+                <ScalarProperty Name="Attr1" ColumnName="Attr1" />
+                <ScalarProperty Name="ActiveFlag" ColumnName="ActiveFlag" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EmployeePhoto" ColumnName="EmployeePhoto" />
+                <ScalarProperty Name="EmployeeBranch" ColumnName="EmployeeBranch" />
+                <ScalarProperty Name="EmployeeIfscCode" ColumnName="EmployeeIfscCode" />
+                <ScalarProperty Name="EmployeeAccountNo" ColumnName="EmployeeAccountNo" />
+                <ScalarProperty Name="EmployeeBankName" ColumnName="EmployeeBankName" />
+                <ScalarProperty Name="EmployeeEmailId" ColumnName="EmployeeEmailId" />
+                <ScalarProperty Name="EmployeeMobile" ColumnName="EmployeeMobile" />
+                <ScalarProperty Name="EmployeeAlternetNo" ColumnName="EmployeeAlternetNo" />
+                <ScalarProperty Name="EmployeeAdharchard" ColumnName="EmployeeAdharchard" />
+                <ScalarProperty Name="EmployeePan" ColumnName="EmployeePan" />
+                <ScalarProperty Name="EmployeeCity" ColumnName="EmployeeCity" />
+                <ScalarProperty Name="EmployeeAddress1" ColumnName="EmployeeAddress1" />
+                <ScalarProperty Name="EmployeeAddress" ColumnName="EmployeeAddress" />
+                <ScalarProperty Name="EmployeeJoingDate" ColumnName="EmployeeJoingDate" />
+                <ScalarProperty Name="EmployeeDob" ColumnName="EmployeeDob" />
+                <ScalarProperty Name="EmployeeDepartment" ColumnName="EmployeeDepartment" />
+                <ScalarProperty Name="EmployeeDesignation" ColumnName="EmployeeDesignation" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="EmployeeGender" ColumnName="EmployeeGender" />
+                <ScalarProperty Name="EmployeeTitle" ColumnName="EmployeeTitle" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Hospital_Information">
+            <EntityTypeMapping TypeName="MY_Db_Hospital_ManagmentModel.M_Hospital_Information">
+              <MappingFragment StoreEntitySet="M_Hospital_Information">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Hospitalwedsite" ColumnName="Hospitalwedsite" />
+                <ScalarProperty Name="HospitalContactNumber1" ColumnName="HospitalContactNumber1" />
+                <ScalarProperty Name="HospitalContactNumber" ColumnName="HospitalContactNumber" />
+                <ScalarProperty Name="HospitalPan" ColumnName="HospitalPan" />
+                <ScalarProperty Name="HospitalCity" ColumnName="HospitalCity" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="HospitalEmailAddress" ColumnName="HospitalEmailAddress" />
+                <ScalarProperty Name="HospitalAddress" ColumnName="HospitalAddress" />
+                <ScalarProperty Name="HospitalName" ColumnName="HospitalName" />
+                <ScalarProperty Name="HospitalId" ColumnName="HospitalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Item_Information">
+            <EntityTypeMapping TypeName="MY_Db_Hospital_ManagmentModel.M_Item_Information">
+              <MappingFragment StoreEntitySet="M_Item_Information">
+                <ScalarProperty Name="Attr6" ColumnName="Attr6" />
+                <ScalarProperty Name="Attr5" ColumnName="Attr5" />
+                <ScalarProperty Name="Attr4" ColumnName="Attr4" />
+                <ScalarProperty Name="Attr3" ColumnName="Attr3" />
+                <ScalarProperty Name="Attr2" ColumnName="Attr2" />
+                <ScalarProperty Name="Attr1" ColumnName="Attr1" />
+                <ScalarProperty Name="ActiveFlag" ColumnName="ActiveFlag" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ItemSaleTaxGroup" ColumnName="ItemSaleTaxGroup" />
+                <ScalarProperty Name="ItemPoTaxGroup" ColumnName="ItemPoTaxGroup" />
+                <ScalarProperty Name="ItemTaxApply" ColumnName="ItemTaxApply" />
+                <ScalarProperty Name="ItemPoType" ColumnName="ItemPoType" />
+                <ScalarProperty Name="ItemHsnCode" ColumnName="ItemHsnCode" />
+                <ScalarProperty Name="ItemMaxQTY" ColumnName="ItemMaxQTY" />
+                <ScalarProperty Name="ItemMinQTY" ColumnName="ItemMinQTY" />
+                <ScalarProperty Name="ItemReturnPolicy" ColumnName="ItemReturnPolicy" />
+                <ScalarProperty Name="ItemQualityCheck" ColumnName="ItemQualityCheck" />
+                <ScalarProperty Name="ItemIsStockebal" ColumnName="ItemIsStockebal" />
+                <ScalarProperty Name="ItemConversionSecondfactor" ColumnName="ItemConversionSecondfactor" />
+                <ScalarProperty Name="ItemConversionFirstFactor" ColumnName="ItemConversionFirstFactor" />
+                <ScalarProperty Name="ItemSecondUnit" ColumnName="ItemSecondUnit" />
+                <ScalarProperty Name="ItemFirstUnit" ColumnName="ItemFirstUnit" />
+                <ScalarProperty Name="ItemEndDate" ColumnName="ItemEndDate" />
+                <ScalarProperty Name="ItemStartDate" ColumnName="ItemStartDate" />
+                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+                <ScalarProperty Name="ItemUseName" ColumnName="ItemUseName" />
+                <ScalarProperty Name="ItemPacinking" ColumnName="ItemPacinking" />
+                <ScalarProperty Name="ItemManufactionName" ColumnName="ItemManufactionName" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Material_Type_Infromation">
+            <EntityTypeMapping TypeName="MY_Db_Hospital_ManagmentModel.M_Material_Type_Infromation">
+              <MappingFragment StoreEntitySet="M_Material_Type_Infromation">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="GlobalId" ColumnName="GlobalId" />
+                <ScalarProperty Name="MaterialType" ColumnName="MaterialType" />
+                <ScalarProperty Name="MaterialTypeId" ColumnName="MaterialTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Packing">
+            <EntityTypeMapping TypeName="MY_Db_Hospital_ManagmentModel.M_Packing">
+              <MappingFragment StoreEntitySet="M_Packing">
+                <ScalarProperty Name="Attr2" ColumnName="Attr2" />
+                <ScalarProperty Name="Attr1" ColumnName="Attr1" />
+                <ScalarProperty Name="SecondPackingConvert" ColumnName="SecondPackingConvert" />
+                <ScalarProperty Name="FirstPackingConvert" ColumnName="FirstPackingConvert" />
+                <ScalarProperty Name="PackingName" ColumnName="PackingName" />
+                <ScalarProperty Name="PackingId" ColumnName="PackingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Person_Information">
+            <EntityTypeMapping TypeName="MY_Db_Hospital_ManagmentModel.M_Person_Information">
+              <MappingFragment StoreEntitySet="M_Person_Information">
+                <ScalarProperty Name="Attr5" ColumnName="Attr5" />
+                <ScalarProperty Name="Attr4" ColumnName="Attr4" />
+                <ScalarProperty Name="Attr3" ColumnName="Attr3" />
+                <ScalarProperty Name="Attr2" ColumnName="Attr2" />
+                <ScalarProperty Name="Attr1" ColumnName="Attr1" />
+                <ScalarProperty Name="ActiveFlag" ColumnName="ActiveFlag" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+                <ScalarProperty Name="PersonGstNumber" ColumnName="PersonGstNumber" />
+                <ScalarProperty Name="PersonAccountNumber" ColumnName="PersonAccountNumber" />
+                <ScalarProperty Name="PersonBankName" ColumnName="PersonBankName" />
+                <ScalarProperty Name="PersonCity" ColumnName="PersonCity" />
+                <ScalarProperty Name="PersonPancard" ColumnName="PersonPancard" />
+                <ScalarProperty Name="PersonOfficeNumber" ColumnName="PersonOfficeNumber" />
+                <ScalarProperty Name="PersonBussnessName" ColumnName="PersonBussnessName" />
+                <ScalarProperty Name="PersonContactNumber" ColumnName="PersonContactNumber" />
+                <ScalarProperty Name="PersonEmailId" ColumnName="PersonEmailId" />
+                <ScalarProperty Name="PersonAddress" ColumnName="PersonAddress" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="PersonType" ColumnName="PersonType" />
+                <ScalarProperty Name="PersonCode" ColumnName="PersonCode" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="GlobalId" ColumnName="GlobalId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Tax_Type_Information">
+            <EntityTypeMapping TypeName="MY_Db_Hospital_ManagmentModel.M_Tax_Type_Information">
+              <MappingFragment StoreEntitySet="M_Tax_Type_Information">
+                <ScalarProperty Name="TaxGroupId" ColumnName="TaxGroupId" />
+                <ScalarProperty Name="TaxPercent" ColumnName="TaxPercent" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Unit_Information">
+            <EntityTypeMapping TypeName="MY_Db_Hospital_ManagmentModel.M_Unit_Information">
+              <MappingFragment StoreEntitySet="M_Unit_Information">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_User_Login_Information">
+            <EntityTypeMapping TypeName="MY_Db_Hospital_ManagmentModel.M_User_Login_Information">
+              <MappingFragment StoreEntitySet="M_User_Login_Information">
+                <ScalarProperty Name="Attr4" ColumnName="Attr4" />
+                <ScalarProperty Name="attr3" ColumnName="attr3" />
+                <ScalarProperty Name="Attr2" ColumnName="Attr2" />
+                <ScalarProperty Name="Attr1" ColumnName="Attr1" />
+                <ScalarProperty Name="Updateddate" ColumnName="Updateddate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="UserConfirmPassword" ColumnName="UserConfirmPassword" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MY_Db_Hospital_ManagmentModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Medicen_Sale_Hedar">
+            <EntityTypeMapping TypeName="MY_Db_Hospital_ManagmentModel.T_Medicen_Sale_Hedar">
+              <MappingFragment StoreEntitySet="T_Medicen_Sale_Hedar">
+                <ScalarProperty Name="Updated_By" ColumnName="Updated_By" />
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="Updated_Date" ColumnName="Updated_Date" />
+                <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+                <ScalarProperty Name="Attr2" ColumnName="Attr2" />
+                <ScalarProperty Name="Attr1" ColumnName="Attr1" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Dr_Name" ColumnName="Dr_Name" />
+                <ScalarProperty Name="Contact_No" ColumnName="Contact_No" />
+                <ScalarProperty Name="Total_Amount" ColumnName="Total_Amount" />
+                <ScalarProperty Name="Discount_Amount_Rupees" ColumnName="Discount_Amount_Rupees" />
+                <ScalarProperty Name="Discount_Amount_Percentage" ColumnName="Discount_Amount_Percentage" />
+                <ScalarProperty Name="Discount_In_Rupees" ColumnName="Discount_In_Rupees" />
+                <ScalarProperty Name="Discount_Percentage" ColumnName="Discount_Percentage" />
+                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+                <ScalarProperty Name="Sale_Document_Number" ColumnName="Sale_Document_Number" />
+                <ScalarProperty Name="Global_Id" ColumnName="Global_Id" />
+                <ScalarProperty Name="Client_Id" ColumnName="Client_Id" />
+                <ScalarProperty Name="Sale_Date" ColumnName="Sale_Date" />
+                <ScalarProperty Name="Sale_Hedar_Id" ColumnName="Sale_Hedar_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Medicen_Sale_Line">
+            <EntityTypeMapping TypeName="MY_Db_Hospital_ManagmentModel.T_Medicen_Sale_Line">
+              <MappingFragment StoreEntitySet="T_Medicen_Sale_Line">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Attr3" ColumnName="Attr3" />
+                <ScalarProperty Name="Attr2" ColumnName="Attr2" />
+                <ScalarProperty Name="Attr1" ColumnName="Attr1" />
+                <ScalarProperty Name="PaidUnpaid" ColumnName="PaidUnpaid" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="ItemTotalAmount" ColumnName="ItemTotalAmount" />
+                <ScalarProperty Name="ItemMrp" ColumnName="ItemMrp" />
+                <ScalarProperty Name="ItemQty" ColumnName="ItemQty" />
+                <ScalarProperty Name="ItemMfg" ColumnName="ItemMfg" />
+                <ScalarProperty Name="ItemExpDate" ColumnName="ItemExpDate" />
+                <ScalarProperty Name="ItemPckg" ColumnName="ItemPckg" />
+                <ScalarProperty Name="ItemBatch" ColumnName="ItemBatch" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="PurchaseLineId" ColumnName="PurchaseLineId" />
+                <ScalarProperty Name="SaleHedarId" ColumnName="SaleHedarId" />
+                <ScalarProperty Name="SaleLineId" ColumnName="SaleLineId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Purchase_Hedar">
+            <EntityTypeMapping TypeName="MY_Db_Hospital_ManagmentModel.T_Purchase_Hedar">
+              <MappingFragment StoreEntitySet="T_Purchase_Hedar">
+                <ScalarProperty Name="Attr8" ColumnName="Attr8" />
+                <ScalarProperty Name="Attr7" ColumnName="Attr7" />
+                <ScalarProperty Name="Attr6" ColumnName="Attr6" />
+                <ScalarProperty Name="Attr5" ColumnName="Attr5" />
+                <ScalarProperty Name="Attr4" ColumnName="Attr4" />
+                <ScalarProperty Name="Attr3" ColumnName="Attr3" />
+                <ScalarProperty Name="Attr2" ColumnName="Attr2" />
+                <ScalarProperty Name="Attr1" ColumnName="Attr1" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="TotalPurchaseAmountHedar" ColumnName="TotalPurchaseAmountHedar" />
+                <ScalarProperty Name="CommisionAmount" ColumnName="CommisionAmount" />
+                <ScalarProperty Name="Commision" ColumnName="Commision" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="PayTerms" ColumnName="PayTerms" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="PurchaseType" ColumnName="PurchaseType" />
+                <ScalarProperty Name="PurchaseTotalAmount" ColumnName="PurchaseTotalAmount" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+                <ScalarProperty Name="PurchaseApprovBy" ColumnName="PurchaseApprovBy" />
+                <ScalarProperty Name="PurchaseStatus" ColumnName="PurchaseStatus" />
+                <ScalarProperty Name="PurchaseDocumentNo" ColumnName="PurchaseDocumentNo" />
+                <ScalarProperty Name="GlobalId" ColumnName="GlobalId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="PurchaseHedarId" ColumnName="PurchaseHedarId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Purchase_Line">
+            <EntityTypeMapping TypeName="MY_Db_Hospital_ManagmentModel.T_Purchase_Line">
+              <MappingFragment StoreEntitySet="T_Purchase_Line">
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="PackingId" ColumnName="PackingId" />
+                <ScalarProperty Name="FreeQty" ColumnName="FreeQty" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="SachDiscount" ColumnName="SachDiscount" />
+                <ScalarProperty Name="HsnCode" ColumnName="HsnCode" />
+                <ScalarProperty Name="Attr7" ColumnName="Attr7" />
+                <ScalarProperty Name="Attr6" ColumnName="Attr6" />
+                <ScalarProperty Name="Attr5" ColumnName="Attr5" />
+                <ScalarProperty Name="Attr4" ColumnName="Attr4" />
+                <ScalarProperty Name="Attr3" ColumnName="Attr3" />
+                <ScalarProperty Name="Attr2" ColumnName="Attr2" />
+                <ScalarProperty Name="Attr1" ColumnName="Attr1" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="MediTotalAmount" ColumnName="MediTotalAmount" />
+                <ScalarProperty Name="Igst" ColumnName="Igst" />
+                <ScalarProperty Name="Sgst" ColumnName="Sgst" />
+                <ScalarProperty Name="GstVat" ColumnName="GstVat" />
+                <ScalarProperty Name="MediQty" ColumnName="MediQty" />
+                <ScalarProperty Name="ItemMediRate" ColumnName="ItemMediRate" />
+                <ScalarProperty Name="ItemDiscount" ColumnName="ItemDiscount" />
+                <ScalarProperty Name="ItemMrp" ColumnName="ItemMrp" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="BatchDate" ColumnName="BatchDate" />
+                <ScalarProperty Name="BatchNO" ColumnName="BatchNO" />
+                <ScalarProperty Name="QualityCheck" ColumnName="QualityCheck" />
+                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+                <ScalarProperty Name="BasicAmount" ColumnName="BasicAmount" />
+                <ScalarProperty Name="TaxType" ColumnName="TaxType" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="DevileryDate" ColumnName="DevileryDate" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="GodownId" ColumnName="GodownId" />
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+                <ScalarProperty Name="ItemPacking" ColumnName="ItemPacking" />
+                <ScalarProperty Name="ItemRate" ColumnName="ItemRate" />
+                <ScalarProperty Name="ItemUnit" ColumnName="ItemUnit" />
+                <ScalarProperty Name="ItemPerUnitRate" ColumnName="ItemPerUnitRate" />
+                <ScalarProperty Name="ItemStripQty" ColumnName="ItemStripQty" />
+                <ScalarProperty Name="ItemTotalStripQty" ColumnName="ItemTotalStripQty" />
+                <ScalarProperty Name="ItemQty" ColumnName="ItemQty" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="GlobalId" ColumnName="GlobalId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="PurchaseHedar" ColumnName="PurchaseHedar" />
+                <ScalarProperty Name="PurchaseLineId" ColumnName="PurchaseLineId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

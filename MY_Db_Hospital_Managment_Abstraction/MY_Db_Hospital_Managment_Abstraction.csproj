@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AD66A08C-3166-4AA5-BB74-1D810F00A01C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MY_Db_Hospital_Managment_Abstraction</RootNamespace>
+    <AssemblyName>MY_Db_Hospital_Managment_Abstraction</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="My_Db_Hospital_Management_EntityFramework">
+      <HintPath>..\My_Db_Hospital_Management_EntityFramework\obj\Debug\My_Db_Hospital_Management_EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MY_Db_Hospital_Managment">
+      <HintPath>..\..\MY_Db_Hospital_Managment\MY_Db_Hospital_Managment\obj\Debug\MY_Db_Hospital_Managment.dll</HintPath>
+    </Reference>
+    <Reference Include="MY_Db_Hospital_Managment_Connection, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MY_Db_Hospital_Managment_Connection\MY_Db_Hospital_Managment_Connection\obj\Debug\MY_Db_Hospital_Managment_Connection.dll</HintPath>
+    </Reference>
+    <Reference Include="MY_Db_Hospital_Managment_Interface">
+      <HintPath>..\..\MY_Db_Hospital_Managment_Interface\MY_Db_Hospital_Managment_Interface\obj\Debug\MY_Db_Hospital_Managment_Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ErrorLog.cs" />
+    <Compile Include="MyAbstraction\A_M_Lookup_Hedar_Abstraction.cs" />
+    <Compile Include="MyAbstraction\A_M_Lookup_Line_Abstraction.cs" />
+    <Compile Include="MyAbstraction\M_Client_Registration_Abstraction.cs" />
+    <Compile Include="MyAbstraction\M_Department_Information_Abstraction.cs" />
+    <Compile Include="MyAbstraction\M_Designation_Information_Abstraction.cs" />
+    <Compile Include="MyAbstraction\M_Employee_Information_Abstraction.cs" />
+    <Compile Include="MyAbstraction\M_Hospital_Information_Abstraction.cs" />
+    <Compile Include="MyAbstraction\M_Item_Information_Abstraction.cs" />
+    <Compile Include="MyAbstraction\M_Material_Type_Infromation_Abstraction.cs" />
+    <Compile Include="MyAbstraction\M_Packing_Abstraction.cs" />
+    <Compile Include="MyAbstraction\M_Person_Information_Abstraction.cs" />
+    <Compile Include="MyAbstraction\M_Tax_Type_Information_Abstraction.cs" />
+    <Compile Include="MyAbstraction\M_Unit_Information_Abstraction.cs" />
+    <Compile Include="MyAbstraction\M_User_Login_Information_Abstraction.cs" />
+    <Compile Include="MyAbstraction\T_Medicen_Sale_Hedar_Abstraction.cs" />
+    <Compile Include="MyAbstraction\T_Medicen_Sale_Line_Abstraction.cs" />
+    <Compile Include="MyAbstraction\T_Purchase_Hedar_Abstraction.cs" />
+    <Compile Include="MyAbstraction\T_Purchase_Line_Abstraction.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
