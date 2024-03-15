@@ -263,7 +263,7 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
         //This Function Get data in list format
         public List<A_M_Lookup_Hedar> GetDataListWithEntityFramework()
         {
-            int a;
+            
             //This is Connection string (MY_Db_Hospital_ManagmentEntities)
             //Object decalraction of  Connection string  
 
