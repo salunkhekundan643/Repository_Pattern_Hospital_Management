@@ -13,11 +13,10 @@ using My_Db_Hospital_Management_EntityFramework.MyDbContext;
 
 namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
 {
-    public  class M_Client_Registration_Abstraction : I_M_Client_Registration
+    public class M_Client_Registration_Abstraction : I_M_Client_Registration
     {
 
         //this function for get datatable from sql using qry string
-        //
         public DataTable GetDataTable()
         {
             ClsFunction cls = new ClsFunction();//This is object of ClsFunction class 
@@ -30,14 +29,22 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
             return _datatable;//Connecting string
         }
 
+
+        //This Function Save or Update data in sql server with ADO.Net
+        //THis Function Save or Update Data With store procedure throw
+
         public void SaveOrUpdatewithADO(M_Client_Registration_Model model)
         {
             string Flag = null;
+
+            // This Is Try/Catch condition
+            //Try/Catch Condition use to Finding error 
             try
             {
 
-
-                if (model.ClientId == 0)//This is IF Else Condition 
+                //This IS IF Else Condition 
+                //Its use to insert or update data in dataTable 
+                if (model.ClientId == 0) 
                 {
                     Flag = "I";
                 }
@@ -45,7 +52,7 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
                 {
                     Flag = "U";
                 }
- 
+
                 ClsFunction cls = new ClsFunction();//This is object of ClsFunction class 
                 SqlConnection sqlcon = cls.Connect();//called connect() method from Clsfunction class 
                 SqlCommand cmd = new SqlCommand();//provider of ADO.Net//used to execute commands at on database
@@ -82,31 +89,40 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
             }
             catch (Exception ex)
             {
-              
-                var st= new System.Diagnostics.StackTrace(ex, true);
-                var frame=st.GetFrame(st.FrameCount -1);
-                var lineNumber = frame .GetFileLineNumber();
-                ErrorLog el=  new ErrorLog();
-                el.Error("M_Client_Registration", "SaveOrUpdateWithADO", lineNumber.ToString(),ex.ToString());
-           
+                //this Is errorlog Function Called
+                //THis Function use to Save error in sql  
+                //This Function help to  Finding error our Code and save this error in sql
+
+                var st = new System.Diagnostics.StackTrace(ex, true);
+                var frame = st.GetFrame(st.FrameCount - 1);
+                var lineNumber = frame.GetFileLineNumber();
+                ErrorLog el = new ErrorLog();
+                el.Error("M_Client_Registration_Abstraction", "SaveOrUpdateWithADO", lineNumber.ToString(), ex.ToString());
+
             }
         }
 
-        public void SaveWithQuery(M_Client_Registration_Model model )
+
+        //This Function save data with Query throw 
+
+        public void SaveWithQuery(M_Client_Registration_Model model)
         {
             string qry = "Insert INTO M_Client_Registration (ClientCode,ClientGlobalId,ClientName,ClientAddress,ClientPhone,ClientCity,BusniessName,ClientPan,ClientRegistrationNo,ClientGST,ClientLogo,ClientEmail,Password,UserName,CreatedBy,CreatedDate,UpdatedDate,ActiveFlag,Attr1,Attr2,Attr3) VALUES" +
-                "('"+model.ClientCode+"','"+model.ClientGlobalId+"','"+model.ClientName+"','"+model.ClientAddress+"','"+model.ClientPhone+"','"+model.ClientCity+"','"+model.BusniessName+"','"+model.ClientPan+"','"+model.ClientRegistrationNo+"','"+model.ClientGST+"','"+model.ClientLogo+"','"+model.ClientEmail+"','"+model.Password+"','"+model.UserName+"','"+model.CreatedBy+"',getdate(),getdate(),'"+model.ActiveFlag+"','"+model.Attr1+"','"+model.Attr2+"','"+model.Attr3+"')";// sequence of character
+                "('" + model.ClientCode + "','" + model.ClientGlobalId + "','" + model.ClientName + "','" + model.ClientAddress + "','" + model.ClientPhone + "','" + model.ClientCity + "','" + model.BusniessName + "','" + model.ClientPan + "','" + model.ClientRegistrationNo + "','" + model.ClientGST + "','" + model.ClientLogo + "','" + model.ClientEmail + "','" + model.Password + "','" + model.UserName + "','" + model.CreatedBy + "',getdate(),getdate(),'" + model.ActiveFlag + "','" + model.Attr1 + "','" + model.Attr2 + "','" + model.Attr3 + "')";// sequence of character
             ClsFunction cls = new ClsFunction();//This is object of ClsFunction class 
             SqlConnection sqlcon = cls.Connect();//called connect() method form Clsfunction class 
             SqlCommand cmd = new SqlCommand();//provider of ADO.Net//used to execute commands at on database
             cmd.CommandText = qry;//It is set or return a string that contain a provider
-            cmd.CommandType= CommandType.Text;//  should  contain text of a query that must be run on the server
-            cmd.Connection= sqlcon;//Connecting string 
+            cmd.CommandType = CommandType.Text;//  should  contain text of a query that must be run on the server
+            cmd.Connection = sqlcon;//Connecting string 
 
             cmd.ExecuteNonQuery();//It's used for Execute sql command 
-             
+
 
         }
+
+
+        //This Function  Insert data in DataTable with help model   
 
         public void SaveWithQueryString(M_Client_Registration_Model model)
         {
@@ -115,6 +131,8 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
             SqlConnection sqlcon = cls.Connect();//called connect() method form Clsfunction class 
             SqlCommand cmd = new SqlCommand();//provider of ADO.Net//used to execute commands at on database
 
+            // This Is Try/Catch condition
+            //Try/Catch Condition use to Finding error 
             try
             {
 
@@ -149,13 +167,17 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
                 cmd.ExecuteNonQuery();//It's used for Execute sql command 
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-               var st= new System.Diagnostics.StackTrace(ex, true);
-                var frame = st.GetFrame(st.FrameCount -1);
+                //this Is errorlog Function Called
+                //THis Function use to Save error in sql  
+                //This Function help to  Finding error our Code and save this error in sql
+
+                var st = new System.Diagnostics.StackTrace(ex, true);
+                var frame = st.GetFrame(st.FrameCount - 1);
                 var lineNumber = frame.GetFileLineNumber();
                 ErrorLog el = new ErrorLog();
-                el.Error("M_Client_Registration", "SaveWithQueryString",lineNumber.ToString(),ex.ToString());
+                el.Error("M_Client_Registration_Abstraction", "SaveWithQueryString", lineNumber.ToString(), ex.ToString());
 
             }
             finally
@@ -166,17 +188,28 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
         }
 
 
-        public List<M_Client_Registration_Model> GetDataList()
+
+
+        //This Function return a Datatable in list form 
+        //This function get data With help ADO
+        public List<M_Client_Registration_Model> GetDataListWithADO()
         {
-            DataTable dt= GetDataTable();
+            DataTable dt = GetDataTable();
             List<M_Client_Registration_Model> _List = new List<M_Client_Registration_Model>();
+
+            // This Is Try/Catch condition
+            //Try/Catch Condition use to Finding error 
             try
             {
-                for (int i=0;i<dt.Rows.Count;i++)
+
+                //This is for Loop Condition
+
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    M_Client_Registration_Model model = new M_Client_Registration_Model();
+                    M_Client_Registration_Model model = new M_Client_Registration_Model();//Create model object 
+                   
                     model.ClientId = Convert.ToInt32(dt.Rows[i]["ClientId"]);
-                    model.ClientCode =dt.Rows[i]["ClientCode"].ToString();
+                    model.ClientCode = dt.Rows[i]["ClientCode"].ToString();
                     model.ClientGlobalId = Convert.ToInt32(dt.Rows[i]["ClientGlobalId"]);
                     model.ClientName = dt.Rows[i]["ClientName"].ToString();
                     model.ClientAddress = dt.Rows[i]["ClientAddress"].ToString();
@@ -203,57 +236,43 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
             }
             catch (Exception ex)
             {
+                //this Is errorlog Function Called
+                //THis Function use to Save error in sql  
+                //This Function help to  Finding error our Code and save this error in sql
+
                 var st = new System.Diagnostics.StackTrace(ex, true);
                 var frame = st.GetFrame(st.FrameCount - 1);
                 var lineNumber = frame.GetFileLineNumber();
                 ErrorLog el = new ErrorLog();
-                el.Error("M_Client_Registration", "GetDataList", lineNumber.ToString(), ex.ToString());
+                el.Error("M_Client_Registration_Abstraction", "GetDataList", lineNumber.ToString(), ex.ToString());
             }
-
             return _List;
         }
 
+
+
+
+        //THIS Function Save or Update Data in DataTable  with help EntityFrameWork 
+        //This Function use to Insert or update  data in DataTable 
         public void SaveOrUpdateWithEntityFrameWork(M_Client_Registration_Model model)
         {
+
+            // This Is Try/Catch condition
+            //Try/Catch Condition use to Finding error 
             try
             {
-                using (MY_Db_Hospital_ManagmentEntities db= new MY_Db_Hospital_ManagmentEntities())
+
+                //This is Connection string (MY_Db_Hospital_ManagmentEntities)
+                //Object decalraction of  Connection string  
+                using (MY_Db_Hospital_ManagmentEntities db = new MY_Db_Hospital_ManagmentEntities())
                 {
-                    if (model.ClientId==0)
-                    {
-                        M_Client_Registration tbl = new M_Client_Registration()
-                        {
-                            ClientCode = model.ClientCode,
-                            ClientGlobalId = model.ClientGlobalId,
-                            ClientName = model.ClientName,
-                            ClientAddress=model.ClientAddress,
-                            ClientPhone= model.ClientPhone,
-                            ClientCity= model.ClientCity,
-                            BusniessName= model.BusniessName,
-                            ClientPan=model.ClientPan,
-                            ClientRegistrationNo=model.ClientRegistrationNo,
-                            ClientGST=model.ClientGST,
-                            ClientLogo= model.ClientLogo,
-                            ClientEmail=  model.ClientEmail,
-                            Password= model.Password,
-                            UserName= model.UserName,
-                            CreatedBy= model.CreatedBy,
-                            CreatedDate= model.CreatedDate,
-                            UpdatedDate= model.UpdatedDate,
-                            ActiveFlag= model.ActiveFlag,
-                            Attr1=model.Attr1,
-                            Attr2=model.Attr2,
-                            Attr3=model.Attr3,
 
-                        };
-                        db.Entry (tbl).State=EntityState.Added;
-                            db.SaveChanges();
-                        
 
-                    }
-                    else
+                    //This IS IF Else Condition 
+                    //ITs use to insert or update data in dataTable 
+                    if (model.ClientId == 0)
                     {
-                        M_Client_Registration tbl = new M_Client_Registration()
+                        M_Client_Registration tbl = new M_Client_Registration()//This is Table Object
                         {
                             ClientCode = model.ClientCode,
                             ClientGlobalId = model.ClientGlobalId,
@@ -278,20 +297,72 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
                             Attr3 = model.Attr3,
 
                         };
-                         db.Entry(tbl).State = EntityState.Modified;
+                        db.Entry(tbl).State = EntityState.Added;//This linq statement save data in datatable 
+                        db.SaveChanges();
+
+
+                    }
+                    else
+                    {
+                        M_Client_Registration tbl = new M_Client_Registration()//This is Table Object
+                        {
+                            ClientCode = model.ClientCode,
+                            ClientGlobalId = model.ClientGlobalId,
+                            ClientName = model.ClientName,
+                            ClientAddress = model.ClientAddress,
+                            ClientPhone = model.ClientPhone,
+                            ClientCity = model.ClientCity,
+                            BusniessName = model.BusniessName,
+                            ClientPan = model.ClientPan,
+                            ClientRegistrationNo = model.ClientRegistrationNo,
+                            ClientGST = model.ClientGST,
+                            ClientLogo = model.ClientLogo,
+                            ClientEmail = model.ClientEmail,
+                            Password = model.Password,
+                            UserName = model.UserName,
+                            CreatedBy = model.CreatedBy,
+                            CreatedDate = model.CreatedDate,
+                            UpdatedDate = model.UpdatedDate,
+                            ActiveFlag = model.ActiveFlag,
+                            Attr1 = model.Attr1,
+                            Attr2 = model.Attr2,
+                            Attr3 = model.Attr3,
+
+                        };
+                        db.Entry(tbl).State = EntityState.Modified;//This linq statement save data in datatable 
                         db.SaveChanges();
                     }
                 }
             }
-            catch(Exception ex)  
+            catch (Exception ex)
             {
-                var st = new System.Diagnostics.StackTrace(ex,true);
-                var frame = st.GetFrame(st.FrameCount -1);
-                var lineNuber= frame.GetFileLineNumber();
+                //this Is errorlog Function Called
+                //THis Function use to Save error in sql  
+                //This Function help to  Finding error our Code and save this error in sql
+
+                var st = new System.Diagnostics.StackTrace(ex, true);
+                var frame = st.GetFrame(st.FrameCount - 1);
+                var lineNuber = frame.GetFileLineNumber();
                 ErrorLog el = new ErrorLog();
-                el.Error("M_Client_Registration", "SaveOrUpdateWithEntityFrameWork",lineNuber.ToString(),ex.ToString());
+                el.Error("M_Client_Registration_Abstraction", "SaveOrUpdateWithEntityFrameWork", lineNuber.ToString(), ex.ToString());
+           
             }
 
+        }
+
+
+        //This Is EntityFrameWork Function 
+        //This Function Get data in list format
+        public List<M_Client_Registration> GetDataListWithEntityFramework()
+        {
+
+
+            //This is Connection string (MY_Db_Hospital_ManagmentEntities)
+            //Object decalraction of  Connection string 
+            MY_Db_Hospital_ManagmentEntities db = new MY_Db_Hospital_ManagmentEntities();
+
+            return db.M_Client_Registration.ToList();//linq query
+                                                     
         }
     }
 }

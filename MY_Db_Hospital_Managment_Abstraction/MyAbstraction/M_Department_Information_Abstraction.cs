@@ -18,7 +18,7 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
     {
 
         //this function for get datatable from sql using qry string
-        //
+        
         public DataTable GetDataTable()
         {
             ClsFunction cls = new ClsFunction();//This is object of ClsFunction class 
@@ -32,12 +32,20 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
 
         }
 
+
+        //This Function Save or Update data in sql server with ADO.Net
+        //THis Function Save or Update Data With store procedure throw
         public void SaveOrUpdateWithADO(M_Department_Information_Model model)
         {
             string Flag = null;
+
+            // This Is Try/Catch condition
+            //Try/Catch Condition use to Finding error 
             try
             {
 
+                //This IS IF Else Condition 
+                //Its use to insert or update data in dataTable 
 
 
                 if (model.DepartmentId == 0)
@@ -74,18 +82,21 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
             }
             catch (Exception ex)
             {
+                //this Is errorlog Function Called
+                //THis Function use to Save error in sql  
+                //This Function help to  Finding error our Code and save this error in sql
+
+
                 var st = new System.Diagnostics.StackTrace(ex, true);
                 var frame = st.GetFrame(st.FrameCount - 1);
                 var lineNumber = frame.GetFileLineNumber();
                 ErrorLog el = new ErrorLog();
                 el.Error("M_Department_Information", "SaveOrUpdateWithADO", lineNumber.ToString(), ex.ToString());
-
             }
-
-
-
         }
 
+
+        //This Function save data with Query throw 
         public void SaveWithQuery(M_Department_Information_Model model)
         {
             string qry = "Insert into M_Department_Information(DepartmentStartDate,DepartmentCode,DepartmentName,DepartmentAddress,DepartmentDescription,HospitalId,CreatedBy,CreatedDate,UpdateDate,UpdateBy) values" +
@@ -98,10 +109,10 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
             cmd.Connection = sqlcon;//Connecting string
 
             cmd.ExecuteNonQuery(); //It's used for Execute sql command 
-
-
         }
 
+
+        //This Function  Insert data in DataTable with help model   
         public void SaveWithQueryString(M_Department_Information_Model model)
         {
             string gry = "Insert into M_Department_Information (DepartmentStartDate,DepartmentCode,DepartmentName,DepartmentAddress,DepartmentDescription,HospitalId,CreatedBy,CreatedDate,UpdateDate,UpdateBy) values (@DepartmentStartDate,@DepartmentCode,@DepartmentName,@DepartmentAddress,@DepartmentDescription,@HospitalId,@CreatedBy,@CreatedDate,@UpdateDate,@UpdateBy)";// sequence of character
@@ -109,7 +120,8 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
             SqlConnection sqlcon = cls.Connect();//called connect() method form Clsfunction class 
             SqlCommand cmd = new SqlCommand();//provider of ADO.Net//used to execute commands at on database
 
-
+            // This Is Try/Catch condition
+            //Try/Catch Condition use to Finding error 
             try
             {
 
@@ -134,6 +146,10 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
             }
             catch (Exception ex)
             {
+                //this Is errorlog Function Called
+                //THis Function use to Save error in sql  
+                //This Function help to  Finding error our Code and save this error in sql
+
 
                 var st = new System.Diagnostics.StackTrace(ex, true);
                 var frame = st.GetFrame(st.FrameCount - 1);
@@ -148,15 +164,24 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
                 cmd.Dispose();
             }
         }
-        public List<M_Department_Information_Model> GetDataList()
+
+        //This Function return a Datatable in list form 
+        //This function get data With help ADO
+        public List<M_Department_Information_Model> GetDataListWithADO()
         {
             DataTable dt = GetDataTable();
             List<M_Department_Information_Model> _List = new List<M_Department_Information_Model>();
+
+            // This Is Try/Catch condition
+            //Try/Catch Condition use to Finding error 
             try
             {
+
+                //This is for Loop Condition
+
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    M_Department_Information_Model model = new M_Department_Information_Model();
+                    M_Department_Information_Model model = new M_Department_Information_Model();//Create model object 
                     model.DepartmentId = Convert.ToInt32(dt.Rows[i]["DepartmentId"]);
                     model.DepartmentStartDate = Convert.ToDateTime(dt.Rows[i]["DepartmentStartDate"]);
                     model.DepartmentCode = dt.Rows[i]["DepartmentCode"].ToString();
@@ -170,52 +195,45 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
                     model.UpdatedBy = Convert.ToInt32(dt.Rows[i]["UpdatedBy"]);
 
                     _List.Add(model);
-
-
                 }
             }
             catch (Exception ex)
             {
+                //this Is errorlog Function Called
+                //THis Function use to Save error in sql  
+                //This Function help to  Finding error our Code and save this error in sql
+
                 var st = new System.Diagnostics.StackTrace(ex, true);
                 var frame = st.GetFrame(st.FrameCount - 1);
                 var lineNumber = frame.GetFileLineNumber();
                 ErrorLog el = new ErrorLog();
                 el.Error("M_Department_Information", "GetDataList", lineNumber.ToString(), ex.ToString());
-           
+
             }
-
-
             return _List;
-
         }
 
+
+        //THIS Function Save or Update Data in DataTable  with help EntityFrameWork 
+        //This Function use to Insert or update  data in DataTable  
         public void SaveOrUpdateWithEntityFrameWork(M_Department_Information_Model model)
         {
+
+            // This Is Try/Catch condition
+            //Try/Catch Condition use to Finding error 
             try
             {
-                using (MY_Db_Hospital_ManagmentEntities db= new MY_Db_Hospital_ManagmentEntities())
+
+                //This is Connection string (MY_Db_Hospital_ManagmentEntities)
+                //Object decalraction of  Connection string  
+                using (MY_Db_Hospital_ManagmentEntities db = new MY_Db_Hospital_ManagmentEntities())
                 {
-                    if (model.DepartmentId==0)
+
+                    //This IS IF Else Condition 
+                    //ITs use to insert or update data in dataTable 
+                    if (model.DepartmentId == 0)
                     {
-                        M_Department_Information tbl = new M_Department_Information()
-                        {
-                            DepartmentStartDate= model.DepartmentStartDate,
-                            DepartmentCode=model.DepartmentCode,
-                            DepartmentName=model.DepartmentName,
-                            DepartmentAddress=model.DepartmentAddress,
-                            DepartmentDescription=model.DepartmentDescription,
-                            HospitalId=model.HospitalId,
-                            CreatedBy=model.CreatedBy,
-                            CreatedDate=model.CreatedDate,
-                            UpdatedDate=model.UpdatedDate,
-                            UpdatedBy  =model.UpdatedBy,
-                        };
-                        db.Entry(tbl).State = EntityState.Added;
-                        db.SaveChanges();
-                    }
-                    else 
-                    {
-                        M_Department_Information tbl = new M_Department_Information()
+                        M_Department_Information tbl = new M_Department_Information() //This is Table Object
                         {
                             DepartmentStartDate = model.DepartmentStartDate,
                             DepartmentCode = model.DepartmentCode,
@@ -228,14 +246,37 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
                             UpdatedDate = model.UpdatedDate,
                             UpdatedBy = model.UpdatedBy,
                         };
-                        db.Entry(tbl).State = EntityState.Modified;
+                        db.Entry(tbl).State = EntityState.Added;//This linq statement save data in datatable
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        M_Department_Information tbl = new M_Department_Information()//This is Table Object
+                        {
+                            DepartmentStartDate = model.DepartmentStartDate,
+                            DepartmentCode = model.DepartmentCode,
+                            DepartmentName = model.DepartmentName,
+                            DepartmentAddress = model.DepartmentAddress,
+                            DepartmentDescription = model.DepartmentDescription,
+                            HospitalId = model.HospitalId,
+                            CreatedBy = model.CreatedBy,
+                            CreatedDate = model.CreatedDate,
+                            UpdatedDate = model.UpdatedDate,
+                            UpdatedBy = model.UpdatedBy,
+                        };
+                        db.Entry(tbl).State = EntityState.Modified;//This linq statement save data in datatable
                         db.SaveChanges();
                     }
                 }
-            }   
+            }
             catch (Exception ex)
             {
-                var st = new System.Diagnostics.StackTrace(ex,true);
+                //this Is errorlog Function Called
+                //THis Function use to Save error in sql  
+                //This Function help to  Finding error our Code and save this error in sql
+
+
+                var st = new System.Diagnostics.StackTrace(ex, true);
                 var frame = st.GetFrame(st.FrameCount - 1);
                 var lineNumber = frame.GetFileLineNumber();
                 ErrorLog el = new ErrorLog();
@@ -243,6 +284,17 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
 
             }
         }
-    }
 
+        //This Is EntityFrameWork Function 
+        //This Function Get data in list format
+        public List<M_Department_Information> GetDataListWithEntityFramework()
+        {
+            //This is Connection string (MY_Db_Hospital_ManagmentEntities)
+            //Object decalraction of  Connection string  
+
+            MY_Db_Hospital_ManagmentEntities db = new MY_Db_Hospital_ManagmentEntities();
+
+            return db.M_Department_Information.ToList();//linq query
+        }
+    }
 }

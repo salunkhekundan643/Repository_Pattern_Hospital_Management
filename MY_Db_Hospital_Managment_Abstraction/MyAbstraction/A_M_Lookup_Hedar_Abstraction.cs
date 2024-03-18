@@ -36,10 +36,16 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
         public void SaveOrUpdateWithADO(A_M_Lookup_Hedar_Model model)
         {
             string Flag;
+
+
+            // This Is Try/Catch condition
+            //Try/Catch Condition use to Finding error 
             try
             {
+                //This IS IF Else Condition 
+                //Its use to insert or update data in dataTable 
 
-                if (model.LookupId == 0) //This is IF Else Condition 
+                if (model.LookupId == 0)  
                 {
                     Flag = "I";
                 }
@@ -50,7 +56,7 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
                 ClsFunction cls = new ClsFunction(); //This is object of ClsFunction class 
                 SqlConnection sqlcon = cls.Connect(); //called connect() method form Clsfunction class 
                 SqlCommand cmd = new SqlCommand(); //provider of ADO.Net  //used to execute commands at on database
-                cmd.CommandText = "Sp_A_M_Lookup_Heda"; //It is set or return a string that contain a provider
+                cmd.CommandText = "Sp_A_M_Lookup_Hedar"; //It is set or return a string that contain a provider
                 cmd.CommandType = CommandType.StoredProcedure;  //should contain text of a query that must be run on the server
                 cmd.Connection = sqlcon; //connection string 
 
@@ -70,6 +76,10 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
             }
             catch (Exception ex)
             {
+                //This Is errorlog Function Called
+                //This Function use to Save error in sql  
+                //This Function help to  Finding error our Code and save this error in sql
+
                 var st = new System.Diagnostics.StackTrace(ex, true);
                 var frame = st.GetFrame(st.FrameCount - 1);
                 var lineNumber = frame.GetFileLineNumber();
@@ -99,6 +109,10 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
             ClsFunction cls = new ClsFunction();//This is object of ClsFunction class
             SqlConnection sqlcon = cls.Connect();//called connect() method from Clsfunction class 
             SqlCommand cmd = new SqlCommand();//provider of ADO.Net//used to execute commands at on database
+
+
+            // This Is Try/Catch condition
+            //Try/Catch Condition use to Finding error 
             try
             {
 
@@ -131,7 +145,6 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
                 ErrorLog el = new ErrorLog();
                 el.Error("A_M_Lookup_Hedar_Abstraction", "SaveWithQueryString", lineNumber.ToString(), ex.ToString());
 
-
             }
             finally
             {
@@ -148,11 +161,18 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
         {
             DataTable dt = GetDataTable();
             List<A_M_Lookup_Hedar_Model> _List = new List<A_M_Lookup_Hedar_Model>();
+
+            // This Is Try/Catch condition
+            //Try/Catch Condition use to Finding error 
             try
             {
+
+                //This is for Loop Condition
+
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    A_M_Lookup_Hedar_Model model = new A_M_Lookup_Hedar_Model(); 
+                    A_M_Lookup_Hedar_Model model = new A_M_Lookup_Hedar_Model(); //Create model object 
+
                     model.LookupId = Convert.ToInt32(dt.Rows[i]["LookupId"]);
                     model.ClientId = Convert.ToInt32(dt.Rows[i]["ClientId"]);
                     model.GlobalId = Convert.ToInt32(dt.Rows[i]["GlobalId"]);
@@ -180,6 +200,7 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
                 var lineNumber = frame.GetFileLineNumber();
                 ErrorLog el = new ErrorLog();
                 el.Error("A_M_Lookup_Hedar_Abstraction", "GetDataList", lineNumber.ToString(), ex.ToString());
+           
             }
 
             return _List;
@@ -225,7 +246,7 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
 
                     }
                     else
-                    {
+                    {       
                         A_M_Lookup_Hedar tbl = new A_M_Lookup_Hedar() //This is Table Object
                         {
                             LookupId = model.LookupId,
@@ -255,6 +276,7 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
                 var lineNumber= frame.GetFileLineNumber();
                 ErrorLog el = new ErrorLog();
                 el.Error("A_M_Lookup_Hedar_Abstraction", "SaveOrUpdateWithEntityFramework",lineNumber.ToString(),ex.ToString());
+           
             }
         }
 
@@ -270,8 +292,6 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
             MY_Db_Hospital_ManagmentEntities db = new MY_Db_Hospital_ManagmentEntities();
 
             return  db.A_M_Lookup_Hedar.ToList();//linq query
-
-
         }
     }
 }

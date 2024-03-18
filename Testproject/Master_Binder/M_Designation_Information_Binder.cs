@@ -21,7 +21,7 @@ namespace Testproject.Master_Binder
             model.UpdatedDate=System.DateTime.Now;
             model.CreatedBy = 1;
             model.UpdatedBy = 2;
-            model.AcFlag =true;
+            model.AcFlag ="A";
 
 
                 return model;

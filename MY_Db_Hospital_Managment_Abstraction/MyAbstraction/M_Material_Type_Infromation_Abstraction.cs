@@ -9,15 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MY_Db_Hospital_Managment_Connection.My_Connection;
+using My_Db_Hospital_Management_EntityFramework.MyDbContext;
 
 namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
 {
     public  class M_Material_Type_Infromation_Abstraction : I_M_Material_Type_Infromation
     {
 
-
         //this function for get datatable from sql using qry string
-        //
         public DataTable GetDataTable()
         {
             ClsFunction cls = new ClsFunction();//This is object of ClsFunction class 
@@ -61,6 +60,8 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
 
             cmd.ExecuteNonQuery();
         }
+
+       
 
         public void SaveWithQuery(M_Material_Type_Infromation_Model model)
         {
@@ -110,6 +111,19 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
                 sqlcon.Close();
                 cmd.Dispose();
             }
+        }
+        public List<M_Material_Type_Infromation_Model> GetDataListWithADO()
+        {
+            throw new NotImplementedException();
+        }
+        public void SaveOrUpdatewithenityFrameWork(M_Material_Type_Infromation_Model model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<M_Material_Type_Infromation> GetDataListWithEntityFramework()
+        {
+            throw new NotImplementedException();
         }
     }
 }

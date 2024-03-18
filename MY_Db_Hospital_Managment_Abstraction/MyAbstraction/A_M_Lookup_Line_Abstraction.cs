@@ -73,14 +73,22 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
             return _datatable;//Connecting string 
         }
 
+
+        //This Function Save or Update data in sql server with ADO.Net
+        //THis Function Save or Update Data With store procedure throw
         public void SaveOrUpdateWithADO(A_M_Lookup_Line_Model model)
         {
             string Flag = null;
+
+            // This Is Try/Catch condition
+            //Try/Catch Condition use to Finding error 
+
             try
             {
 
-
-                if (model.LineId == 0)//This is IF Else Condition 
+                 //This IS IF Else Condition 
+                    //ITs use to insert or update data in dataTable 
+                if (model.LineId == 0) 
                 {
                     Flag = "I";
                 }
@@ -114,15 +122,21 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
             catch (Exception ex)
             {
 
+                //This Is errorlog Function Called
+                //This Function use to Save error in sql  
+                //This Function help to  Finding error our Code and save this error in sql
+
                 var st = new System.Diagnostics.StackTrace(ex, true);
                 var frame = st.GetFrame(st.FrameCount - 1);
                 var lineNumber = frame.GetFileLineNumber();
                 ErrorLog el = new ErrorLog();
-                el.Error("A_M_Lookup_Line", "SaveOrUpdateWithADO", lineNumber.ToString(), ex.ToString());
+                el.Error("A_M_Lookup_Line_Abstraction", "SaveOrUpdateWithADO", lineNumber.ToString(), ex.ToString());
             }
 
         }
 
+
+        //This Function save data with Query throw 
         public void SaveWithQuery(A_M_Lookup_Line_Model model)
         {
             string qry = "Insert INTO A_M_Lookup_Line (ClientId,GlobalId,LookupId,LineName,LineDescripition,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)  values  ('" + model.ClientId+"','"+model.GlobalId+"','"+model.LookupId+"','"+model.LineName+"','"+model.LineDescription+"','"+model.CreatedBy+"','"+model.CreatedDate+"','"+model.UpdatedBy+"','"+model.UpdatedDate+"')";//sequence of character
@@ -133,6 +147,8 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
             cmd.ExecuteNonQuery();//It's used for Execute sql command 
 
         }
+
+        //This Function  Insert data in DataTable with help model  
         public void SaveWithQueryString (A_M_Lookup_Line_Model model)
         {
             string qry = "Insert INTO A_M_Lookup_Line ([ClientId],[GlobalId],[LookupId],[LineName],[LineDescription],[CreatedBy],[CreatedDate],[UpdatedBy],[UpdatedDate]) values (@ClientId,@GlobalId,@LookupId,@LineName,@LineDescription,@CreatedBy,@CreatedDate,@UpdatedBy,@UpdatedDate)";//sequence of character
@@ -160,7 +176,16 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
             }
             catch (Exception ex)
             {
-                throw ex;
+
+                //This Is errorlog Function Called
+                //This Function use to Save error in sql  
+                //This Function help to  Finding error our Code and save this error in sql
+
+                var st = new System.Diagnostics.StackTrace(ex, true);
+                var frame = st.GetFrame(st.FrameCount - 1);
+                var lineNumber = frame.GetFileLineNumber();
+                ErrorLog el = new ErrorLog();
+                el.Error("A_M_Lookup_Line_Abstraction", "SaveOrUpdateWithEntityFrameWork", lineNumber.ToString(), ex.ToString());
             }
             finally
             {
@@ -168,14 +193,91 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
                 cmd.Dispose();
             }
         }
+     
 
-        public  List<A_M_Lookup_Line_Model> GetDataList()
+        //THIS Function Save or Update Data in DataTable  with help EntityFrameWork 
+        //This Function use to Insert or update  data in DataTable 
+        public void SaveOrUpdateWithEntityFrameWork(A_M_Lookup_Line_Model model)
         {
-            DataTable dt = GetDataTable();
-            List<A_M_Lookup_Line_Model> _List= new List<A_M_Lookup_Line_Model> ();
+
+            // This Is Try/Catch condition
+            //Try/Catch Condition use to Finding error 
             try
             {
 
+                //This is Connection string (MY_Db_Hospital_ManagmentEntities)
+                //Object decalraction of  Connection string  
+                using (MY_Db_Hospital_ManagmentEntities db = new MY_Db_Hospital_ManagmentEntities())
+                {
+
+                    //This IS IF Else Condition 
+                    //ITs use to insert or update data in dataTable 
+                    if (model.LineId==0)
+                    {   
+                        A_M_Lookup_Line tbl = new A_M_Lookup_Line() //This is Table Object
+                        {
+                            ClientId = model.ClientId,
+                            GlobalId= model.GlobalId,
+                            LookupId= model.LookupId,
+                            LineName= model.LineName,
+                            LineDescription= model.LineDescription,
+                            CreatedBy= model.CreatedBy,
+                            CreatedDate= model.CreatedDate, 
+                            UpdatedBy= model.UpdatedBy,
+                            UpdatedDate= model.UpdatedDate, 
+                        };
+                        db.Entry(tbl).State=EntityState.Added;//This linq statement save data in datatable 
+                        db.SaveChanges();   
+
+                    }
+                    else
+                    {
+                        A_M_Lookup_Line tbl = new A_M_Lookup_Line() //This is Table Object  
+                        {
+                            ClientId = model.ClientId,
+                            GlobalId = model.GlobalId,
+                            LookupId = model.LookupId,
+                            LineName = model.LineName,
+                            LineDescription = model.LineDescription,
+                            CreatedBy = model.CreatedBy,
+                            CreatedDate = model.CreatedDate,
+                            UpdatedBy = model.UpdatedBy,
+                            UpdatedDate = model.UpdatedDate,
+                        };
+                        db.Entry(tbl).State = EntityState.Modified;// this linq statement Update date in datdatable
+                        db.SaveChanges();
+                    }
+
+                }
+            }
+            catch(Exception ex)
+            {
+
+                //This Is errorlog Function Called
+                //This Function use to Save error in sql  
+                //This Function help to  Finding error our Code and save this error in sql
+
+                var st = new System.Diagnostics.StackTrace(ex, true );
+                var frame=st.GetFrame(st.FrameCount -1 );
+                var lineNumber= frame.GetFileLineNumber();
+                ErrorLog el = new ErrorLog();
+                el.Error("A_M_Lookup_Line_Abstraction", "SaveOrUpdateWithEntityFrameWork",lineNumber.ToString(),ex.ToString());
+
+            }
+        }
+
+        //This Function return a Datatable in list form 
+        //This function get data With help ADO  
+        public List<A_M_Lookup_Line_Model> GetDataListWithADO()
+        {
+            DataTable dt = GetDataTable();
+            List<A_M_Lookup_Line_Model> _List = new List<A_M_Lookup_Line_Model>();
+
+            // This Is Try/Catch condition
+            //Try/Catch Condition use to Finding error 
+            try
+            {
+                //This is for Loop Condition
 
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
@@ -197,81 +299,36 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
             }
             catch (Exception ex)
             {
-                throw ex;
+
+                //This Is errorlog Function Called
+                //This Function use to Save error in sql  
+                //This Function help to  Finding error our Code and save this error in sql
+
+                var st = new System.Diagnostics.StackTrace(ex, true);
+                var frame = st.GetFrame(st.FrameCount - 1);
+                var lineNumber = frame.GetFileLineNumber();
+                ErrorLog el = new ErrorLog();
+                el.Error("A_M_Lookup_Line_Abstraction", "SaveOrUpdateWithEntityFrameWork", lineNumber.ToString(), ex.ToString());
             }
 
             return _List;
         }
 
-        public void SaveOrUpdateWithEntityFrameWork(A_M_Lookup_Line_Model model)
-        {
-            try
-            {
-                using (MY_Db_Hospital_ManagmentEntities db = new MY_Db_Hospital_ManagmentEntities())
-                {
-                    if (model.LineId==0)
-                    {   
-                        A_M_Lookup_Line tbl = new A_M_Lookup_Line()
-                        {
-                            ClientId = model.ClientId,
-                            GlobalId= model.GlobalId,
-                            LookupId= model.LookupId,
-                            LineName= model.LineName,
-                            LineDescription= model.LineDescription,
-                            CreatedBy= model.CreatedBy,
-                            CreatedDate= model.CreatedDate, 
-                            UpdatedBy= model.UpdatedBy,
-                            UpdatedDate= model.UpdatedDate, 
-                        };
-                        db.Entry(tbl).State=EntityState.Added;
-                        db.SaveChanges();   
 
-                    }
-                    else
-                    {
-                        A_M_Lookup_Line tbl = new A_M_Lookup_Line()
-                        {
-                            ClientId = model.ClientId,
-                            GlobalId = model.GlobalId,
-                            LookupId = model.LookupId,
-                            LineName = model.LineName,
-                            LineDescription = model.LineDescription,
-                            CreatedBy = model.CreatedBy,
-                            CreatedDate = model.CreatedDate,
-                            UpdatedBy = model.UpdatedBy,
-                            UpdatedDate = model.UpdatedDate,
-                        };
-                        db.Entry(tbl).State = EntityState.Modified;
-                        db.SaveChanges();
-                    }
 
-                }
-            }
-            catch(Exception ex)
-            {
-                var st = new System.Diagnostics.StackTrace(ex, true );
-                var frame=st.GetFrame(st.FrameCount -1 );
-                var lineNumber= frame.GetFileLineNumber();
-                ErrorLog el = new ErrorLog();
-                el.Error("A_M_Lookup_Line", "SaveOrUpdateWithEntityFrameWork",lineNumber.ToString(),ex.ToString());
-
-            }
-        }
-
-        public List<A_M_Lookup_Line_Model> GetDataListWithADO()
-        {
-            throw new Exception();
-        }
-
-        public List<A_M_Lookup_Hedar> GetDataListWithEntityFramework()
+        //This Is EntityFrameWork Function 
+        //This Function Get data in list format
+        public List<A_M_Lookup_Line> GetDataListWithEntityFramework()
         {
 
             //This is Connection string (MY_Db_Hospital_ManagmentEntities)
-            //Object decalraction of  Connection string  
+            //Object decalraction of  Connection string     
 
             MY_Db_Hospital_ManagmentEntities db = new MY_Db_Hospital_ManagmentEntities();
 
-            return db.A_M_Lookup_Hedar.ToList();
+            return db.A_M_Lookup_Line.ToList(); //linq query
         }
+ 
     }
 }
+

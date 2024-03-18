@@ -8,11 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MY_Db_Hospital_Managment_Connection.My_Connection;
+using My_Db_Hospital_Management_EntityFramework.MyDbContext;
 
 namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
 {
     public  class M_Packing_Abstraction : I_M_Packing
     {
+       
 
 
         //this function for get datatable from sql using qry string
@@ -62,6 +64,8 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
 
         }
 
+       
+
         public void SaveWithQuery(M_Packing_Model model)
         {
             string qry = "Insert into M_Packing (PackingName,FirstPackingConvert,SecondPackingConvert,Attr1,Attr2) values ('"+model.PackingName + "','"+model.FirstPackingConvert + "','"+model.SecondPackingConvert + "','"+model.Attr1 + "','"+model.Attr2+"')";// sequence of character
@@ -106,5 +110,18 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
                 cmd.Dispose();
             }
         }
+        public List<M_Packing_Model> GetDataListWithADO()
+        {
+            throw new NotImplementedException();
+        }
+        public void SaveOrUpdatewithenityFrameWork(M_Packing_Model model)
+        {
+            throw new NotImplementedException();
+        }
+        public List<M_Packing> GetDataListWithEntityFramework()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

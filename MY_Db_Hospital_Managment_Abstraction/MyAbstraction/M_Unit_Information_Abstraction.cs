@@ -8,12 +8,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MY_Db_Hospital_Managment_Connection.My_Connection;
-
+using My_Db_Hospital_Management_EntityFramework.MyDbContext;
 
 namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
 {
     public  class M_Unit_Information_Abstraction : I_M_Unit_Information
     {
+        public List<M_Unit_Information_Model> GetDataListWithADO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<M_Unit_Information> GetDataListWithEntityFramework()
+        {
+            throw new NotImplementedException();
+        }
 
 
         //this function for get datatable from sql using qry string
@@ -61,6 +70,11 @@ namespace MY_Db_Hospital_Managment_Abstraction.MyAbstraction
 
 
             cmd.ExecuteNonQuery();
+        }
+
+        public void SaveOrUpdatewithenityFrameWork(M_Unit_Information_Model model)
+        {
+            throw new NotImplementedException();
         }
 
         public void SaveWithQuery(M_Unit_Information_Model model)
